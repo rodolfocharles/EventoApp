@@ -1,5 +1,6 @@
 package com.eventoapp.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,9 @@ public class EventoController {
 	}
 	
 	@RequestMapping(value="/cadastrarEvento", method=RequestMethod.POST)
-	public String form(@Valid Evento evento, BindingResult result, RedirectAttributes attributes) {
+	public String form(@Valid Evento evento, BindingResult result, HttpSession sessao,  RedirectAttributes attributes) {
 		if (result.hasErrors()) {
-			attributes.addFlashAttribute("mensagem", "Verifique os campos");
+			attributes.addFlashAttribute("mensagem", "Verifique os campos!!!");
 			return "redirect:/cadastrarEvento";
 		}
 		er.save(evento);
